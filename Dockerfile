@@ -26,8 +26,6 @@ WORKDIR /dist
 # Copy binary from build to main folder
 RUN cp /build/main .
 
-# Export necessary port
-EXPOSE 3000
 
 # Command to run when starting the container
 CMD ["/dist/main"]
@@ -35,6 +33,9 @@ CMD ["/dist/main"]
 FROM scratch
 
 COPY --from=builder /dist/main /
+
+# Export necessary port
+EXPOSE 80
 
 # Command to run
 ENTRYPOINT ["/main"]
