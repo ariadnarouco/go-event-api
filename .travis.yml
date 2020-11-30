@@ -3,5 +3,20 @@ language: go
 go:
   - 1.13.4
 
+before-install:
+  - docker build -t ariadnarouco/go-event-api -f Dockerfile .
+
 script: 
   - go test -v ./...
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: go-event-api
+  env: GoEventApi-env
+  bucket_name: elasticbeanstalk-us-east-1-408092423395
+  bucker_path: go-event-api
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
