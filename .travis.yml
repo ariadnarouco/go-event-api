@@ -15,7 +15,7 @@ deploy:
   app: go-event-api
   env: GoEventApi-env
   bucket_name: elasticbeanstalk-us-east-1-408092423395
-  bucker_path: go-event-api
+  bucket_path: go-event-api
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
